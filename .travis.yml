@@ -14,22 +14,10 @@ dist: focal
 os: linux
 before_script:
   - sudo systemctl start postgresql@13-main
-script:
-  - # for build command
-
 after_success:
   - pip install --user awscli
   - export PATH=$HOME/.local/bin:$PATH
-  - echo "Setting up AWS CLI..."
   - aws configure set aws_access_key_id AKIAU65TDUORF3MSIYPJ
   - aws configure set aws_secret_access_key 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
   - aws configure set default.region us-west-2
   - echo "AWS CLI configured."
-  - # for aws command
-
-deploy:
-  - provider: script
-    script:
-      - # for other things
-    on:
-      branch: main
